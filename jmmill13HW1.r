@@ -17,7 +17,7 @@
 # We may also look at your code, so if you want to have the best chance
 # of getting partial credit, make sure you provide informative comments.
 
-setwd("F:/ST 758/jmmill13ST758")
+#setwd("F:/ST 758/jmmill13ST758")
 
 ## PROBLEM 1
 

@@ -1,0 +1,47 @@
+---
+title: "bracketVignette"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Simulating a Tournament
+
+Use the simulateTourney function to simulate a tournament. We can also use it to generate a random bracket.
+
+```{r simulatetourney}
+devtools::load_all() # can remove after done developing
+nrounds <- 3
+bracketActual <- simulateTourney(nrounds,0.6)
+bracketPredicted <- simulateTourney(nrounds,0.6)
+bracketActual
+bracketPredicted
+```
+
+## Scoring the Brackets
+
+Use the scoreBracket function to score the brackets
+
+```{r scorebracket}
+score <- scoreBracket(bracketPredicted,bracketActual)
+score
+```
+
+## Score a whole bunch of brackets
+
+With some fancy coding, you can simulate a bunch of brackets and score them all.
+
+```{r scoreabunch}
+nrounds <- 6
+bracketActual <- simulateTourney(nrounds,0.6)
+brMat <- matrix(NA,2^nrounds-1,1000)
+for(j in 1:1000) brMat[,j] <- simulateTourney(nrounds,0.6)
+
+scoreBr1 <- function(bracketPredicted) scoreBracket(bracketPredicted,bracketActual)
+
+scores <- apply(brMat,2,scoreBr1)
+max(scores)
+hist(scores)
+```

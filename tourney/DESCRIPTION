@@ -1,0 +1,18 @@
+Package: tourney
+Type: Package
+Title: R Tools For Fixed Bracket Tournaments
+Version: 0.1.0
+Author: Joe Guinness
+Maintainer: Who to complain to <eblaber@ncsu.edu>
+Description: Functions for simulating tournaments and scoring predicted
+    brackets.
+License: What license is it under (MIT, GNU, etc.)?
+LazyData: TRUE
+Imports: 
+    matrixStats,
+    Rcpp
+RoxygenNote: 5.0.1
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
+LinkingTo: Rcpp

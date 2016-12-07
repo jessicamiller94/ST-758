@@ -30,22 +30,48 @@
 \end{center}
 
 \begin{flushleft}
-	For this assignment, I did not have a lot of time to complete it around recent and sudden events in the last two weeks. However, I would like to take this opportunity to express some thoughts I had about how I might approach it.
+	For this assignment, I focused on the two issues that would slow down the computation of the Gaussian log-likelihood: the locations and the matrix inverse. To reduce the number of locations, I created grids to approximate the given locations. To calculate the matrix inverse, I investigated two different methods in R.
 	\newline
 	\newline
-	One of the first approaches that comes to mind is to reduce the number of locations. The more locations, the larger the distance matrix and the longer it takes to compute the log-likelihood. To explore this, I would plot the locations and identify a grid of knots. This grid would represent and approximate the spatial domain without using all the locations. If there is clustering in the locations, I would weight the knots by location population in that area. In order to address accuracy, I would explore the number of knots to choose by increasing their density, under the assumption that more knots comes closer to the truth, while tracking the speed of the function computation. By balancing the two, I would get an approximation that is accurate and yet computes much more quickly than if I used every single location.
-	\newline
-	\newline
-	Something I would also explore would be Fourier transforms. I know there is a one-to-one map from a covariance function to a spectral density and that using spectral densities are significantly faster to compute. Since the covariance functions in the assignment are similar to the common exponential and Matern functions, I would find their corresponding spectral densities and compare the timing of the Gaussian log-likelihood using Fourier computations to the timing using covariance functions.
-	\newline
-	\newline
-	Finally, I would focus on the covariance matrix and likelihood functions themselves. The diagonals of each are equal to 1, which implies the matrix could be almost Toeplitz. Exploiting such characteristics would improve the calculation of the inverse and determinant. There are a variety of methods to approximate the likelihoods, such as pairing the data into bivariate Normals instead of multivariate. One could also divide the locations up into blocks, thus computing smaller distance and covariance matrices, and then multiply all the likelihoods together.
-	\newline
-	\newline
-	These are all methods I am very interested in exploring. It is unfortunate that I was not able to.
+	The more locations included, the larger the distance matrix and the longer it takes to compute the log-likelihood. To explore this, I identified a group of knots. Using knots is fairly common practice in spatial statistics to approximate a group of locations, even those that are clustered. The locations for this assignment are very grid-like and so using another grid of knots is not an extreme idea. For the group of 1024 locations, I used a grid evenly spaced by 0.5 units. For my initial calculations, I used a grid spaced as such for each group of locations, no matter the density of the locations. See Figure \ref{e:max} for the grid using for the 1024 locations.	
 \end{flushleft}
 
+\begin{figure}[h]\begin{center}
+		\caption{The 1024 locations, plotted in black, and the grid used to approximate them, plotted in red.}\label{e:max}
+		\includegraphics[width=.8\textwidth]{proj2_1}	
+	\end{center}\end{figure}
 
+\begin{flushleft}
+	After I created my grids to approximate the locations, I continued to the calculation of the log-likelihood. I calculated two covariance matrices for each grid, following the equations from the project guidelines. From there, I focused on speed: how can I calculate the inverse of the covariance matrix, and thus the log-likelihood, the quickest? I investigated the timings using the \verb|solve()| and \verb|chol2inv()| functions in R. I generated 400 different multivariate Normal responses with mean 0 and sigma corresponding to the appropriate locations' covariance matrix. Using these, I calculated each log-likelihood and averaged their system speeds. In Table \ref{t:max}, we see that the \verb|chol2inv()| function calculates the inverse more quickly.
+\end{flushleft}
+
+\begin{table}[h]\caption{System timings (seconds) for each grid, covariance function, and matrix inversion method.}\label{t:max}	
+	\begin{center}\begin{tabular}{ c || c || c c c  }
+			Cov. Fun. & & 1024 & 2025 & 4096\\
+			\hline
+			Matern & solve & 0.077 & 0.087 & 0.088\\ & chol2inv & 0.036 & 0.040 & 0.040\\
+			\hline
+			Exp. & solve & 0.092 & 0.079 & 0.089\\ & chol2inv & 0.042 & 0.036 & 0.040\\ 
+		\end{tabular}\end{center}\end{table}
+
+\begin{flushleft}
+	After this initial analysis of speed, I moved on to improving accuracy. I increased the density of the grids for the 2025 and 4096 locations. The 2025 locations were increased to a spacing of .375 units and the 4096 locations were increased to a spacing of .25 units to better approximate the original sites. The speed decreased significantly for the exponential covariance function, as seen in Table \ref{t:min}.
+\end{flushleft}
+
+\begin{table}[h]\caption{System timings (seconds) for the 2025 and 4096 grids, and each covariance function and matrix inversion method.}\label{t:min}	
+	\begin{center}\begin{tabular}{ c || c || c c  }
+			Cov. Fun. & & 2025 & 4096\\
+			\hline
+			Matern & solve & 0.079 & 0.089\\ & chol2inv & 0.035 & 0.041\\
+			\hline
+			Exp. & solve & 0.605 & 4.660\\ & chol2inv & 0.236 & 2.065\\ 
+		\end{tabular}\end{center}\end{table}
+		
+\begin{flushleft}
+	It is interesting that the Matern covariance function did not increase in timing as much as the exponential covariance function did. The \verb|chol2inv()| R function continued to calculate the inverse more quickly than the \verb|solve()| function.
+	\newline\newline
+	To optimize both speed and accuracy of the calculation of the Gaussian log-likelihood, I would use the higher grid densities when using the Matern covariance function and the lower grid densities when using the exponential covariance function. This promises the accuracy of the higher densities but the speed of the lower densities when using either covariance function.
+\end{flushleft}
 
 
 \end{document}

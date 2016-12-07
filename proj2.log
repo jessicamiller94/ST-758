@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.9.23)  10 NOV 2016 09:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.9.23)  6 DEC 2016 23:36
 entering extended mode
 **proj2.tex
 (proj2.tex
@@ -190,24 +190,44 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 25.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 26.
- [1
+ <proj2_1.pdf, id=1, 394.47375pt x 239.89626pt>
+File: proj2_1.pdf Graphic file (type pdf)
+ <use proj2_1.pdf>
+Package pdftex.def Info: proj2_1.pdf used on input line 41.
+(pdftex.def)             Requested size: 375.80542pt x 228.54439pt.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 45.
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] (proj2.aux) ) 
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 49.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 49.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1
+
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <./proj2_1.pdf>] [2] (proj
+2.aux) ) 
 Here is how much of TeX's memory you used:
- 2503 strings out of 493698
- 30342 string characters out of 3144406
- 90345 words of memory out of 3000000
- 5830 multiletter control sequences out of 15000+200000
- 9791 words of font info for 23 fonts, out of 3000000 for 9000
+ 2609 strings out of 493698
+ 31769 string characters out of 3144406
+ 91369 words of memory out of 3000000
+ 5902 multiletter control sequences out of 15000+200000
+ 17931 words of font info for 52 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 27i,4n,32p,839b,141s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program 
-Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program Files/MiKTeX 2.9/f
-onts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/ti
-mes/utmr8a.pfb>
-Output written on proj2.pdf (1 page, 27441 bytes).
+ 27i,7n,32p,847b,266s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Progra
+m Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 
+2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/u
+rw/times/utmr8a.pfb>
+Output written on proj2.pdf (2 pages, 119965 bytes).
 PDF statistics:
- 15 PDF objects out of 1000 (max. 8388607)
+ 28 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
